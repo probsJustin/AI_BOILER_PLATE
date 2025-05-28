@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  geojson-mcp:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../data:/app/data  # Mounts a 'data' directory on the host to '/app/data' in the container
+    restart: unless-stopped
