@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(touch:*)",
+      "Bash(docker-compose logs:*)",
+      "Bash(grep:*)",
+      "Bash(sed:*)",
+      "Bash(docker-compose restart:*)",
+      "Bash(ls:*)",
+      "Bash(docker-compose build:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker restart:*)",
+      "Bash(docker-compose stop:*)",
+      "Bash(docker-compose start:*)"
+    ],
+    "deny": []
+  }
+}
