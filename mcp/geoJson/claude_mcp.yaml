@@ -1,0 +1,29 @@
+mcp:
+  name: "GeoJSON MCP Server"
+  description: "An MCP server that manages CRUD operations for GeoJSON files, with path-based keys and validation."
+  version: "1.3"
+  endpoints:
+    - path: "/geojson/{path}"
+      methods: ["POST", "PUT", "GET", "DELETE"]
+      description: "CRUD operations for managing GeoJSON files by path."
+    - path: "/geojson"
+      methods: ["GET"]
+      description: "List all stored GeoJSON files with paths."
+  storage:
+    type: "in-memory"
+    persistence: "future-disk-persistence-optional"
+    data_dir: "/app/data"  # Mount point from docker-compose
+  validation:
+    enabled: true
+    type: "basic-geojson"
+    details: "Ensures valid GeoJSON structure including type, features, and geometry."
+  server:
+    host: "0.0.0.0"
+    port: 8000
+    debug: true
+  docker:
+    image: "geojson-mcp:latest"
+    volumes:
+      - "./data:/app/data"
+    ports:
+      - "8000:8000"
