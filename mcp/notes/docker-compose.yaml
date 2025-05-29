@@ -3,7 +3,7 @@ services:
   notes-mcp:
     build: .
     ports:
-      - "8000:8000"
+      - "8002:8000"
     volumes:
       - ../../repo:/app/repo
     restart: unless-stopped

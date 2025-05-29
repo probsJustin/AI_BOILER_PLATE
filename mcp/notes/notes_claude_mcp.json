@@ -1,0 +1,69 @@
+{
+  "mcp": {
+    "name": "Markdown Git Notes MCP Server",
+    "description": "Store, search, and expand notes in a Git repo with auto-commit, UUIDs, last updated dates, and full Markdown management.",
+    "version": "3.0",
+    "endpoints": [
+      {
+        "path": "/notes",
+        "methods": ["POST", "GET"],
+        "description": "Create a new note or list all notes with metadata."
+      },
+      {
+        "path": "/notes/{note_uuid}",
+        "methods": ["GET", "PUT", "DELETE"],
+        "description": "Retrieve, update, or delete a note by UUID."
+      },
+      {
+        "path": "/notes/{note_uuid}/history",
+        "methods": ["GET"],
+        "description": "Retrieve the version history of a note by UUID."
+      },
+      {
+        "path": "/search",
+        "methods": ["GET"],
+        "description": "Search notes by keyword, tag, or author."
+      },
+      {
+        "path": "/expand",
+        "methods": ["POST"],
+        "description": "Expand a topic from the notes (basic AI-powered expansion)."
+      },
+      {
+        "path": "/summarize",
+        "methods": ["POST"],
+        "description": "Summarize the content of a note by UUID."
+      }
+    ],
+    "storage": {
+      "type": "git-repo",
+      "location": "/app/repo",
+      "format": "markdown-with-yaml-metadata",
+      "metadata": {
+        "note_uuid": "Unique identifier for the note.",
+        "last_updated": "Timestamp of last modification.",
+        "tags": "Comma-separated tags for categorization.",
+        "author": "Author of the note."
+      }
+    },
+    "validation": {
+      "enabled": true,
+      "type": "markdown-metadata-validation",
+      "details": "Ensures proper YAML frontmatter with required fields."
+    },
+    "server": {
+      "host": "0.0.0.0",
+      "port": 8000,
+      "debug": true
+    },
+    "docker": {
+      "image": "git-notes-mcp:latest",
+      "volumes": [
+        "../../repo:/app/repo"
+      ],
+      "ports": [
+        "8002:8000"
+      ]
+    }
+  }
+}

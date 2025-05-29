@@ -16,8 +16,15 @@
       "Bash(docker exec:*)",
       "Bash(docker restart:*)",
       "Bash(docker-compose stop:*)",
-      "Bash(docker-compose start:*)"
+      "Bash(docker-compose start:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(mkdir:*)",
+      "Bash(dos2unix:*)",
+      "Bash(claude mcp:*)",
+      "Bash(./scripts/add_mcp_servers.sh:*)",
+      "Bash(docker compose:*)"
     ],
     "deny": []
-  }
+  },
+  "enableAllProjectMcpServers": false
 }
